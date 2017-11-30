@@ -43,7 +43,7 @@ iter = 0
 print("Iteracion general : "+str(iter)+"/"+str(Ngen))
 aux = genetico(n[:,0],n[:,1])
 while iter < Ngen:
-	print("Iteracion general : "+str(iter+1)+"/"+str(Ngen))
+	#print("Iteracion general : "+str(iter+1)+"/"+str(Ngen))
 	rank = 1/(1-aux)
 	n = fentogen(n,largo,xmax,ymax,xmin,ymin)
 	n = pareja(n,rank,mut,cross)

@@ -9,16 +9,18 @@ from gentofen import gentofen
 def genetico(pMut,pCru):
 	f = 0
 	c = 0
+	a = 0
 	pMut = pMut.reshape(pMut.shape[0],int(pMut.size/pMut.shape[0]))
 	pCru = pCru.reshape(pMut.shape[0],int(pMut.size/pMut.shape[0]))
 	de = np.zeros([pMut.shape[0],pMut.shape[1]])
 	while f<pMut.shape[0]:
 		c = 0
 		while c<pMut.shape[1]:
+			print("   Par de Probabilidad : "+str(a)+"/"+str(50))
 			dominio_funcion = 10
 			largo = 8				#longitud del gen (debe ser par)
-			Ngen = 20				#cantidad de generaciones
-			Nind = 20				#numero de individuos
+			Ngen = 30				#cantidad de generaciones
+			Nind = 50				#numero de individuos
 			mut = pMut[f][c]				#tasa de mutacion
 			cross = pCru[f][c]				#tasa de cruzamiento
 			Nprueba = 20
@@ -49,7 +51,8 @@ def genetico(pMut,pCru):
 				p = p+1
 			promedio = mE.mean()
 			#print(np.sqrt(np.sum((promedio-mE)**2)/2))
-			de[f][c] = np.sqrt( ( np.sum((promedio-mE)**2) )/Nprueba )
+			de[f][c] = promedio
 			c = c+1
+			a = a+1
 		f = f+1
 	return de

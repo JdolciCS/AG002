@@ -16,7 +16,7 @@ def genetico(pMut,pCru):
 	while f<pMut.shape[0]:
 		c = 0
 		while c<pMut.shape[1]:
-			print("   Par de Probabilidad : "+str(a)+"/"+str(50))
+			#print("   Par de Probabilidad : "+str(a)+"/"+str(50))
 			dominio_funcion = 10
 			largo = 8				#longitud del gen (debe ser par)
 			Ngen = 30				#cantidad de generaciones

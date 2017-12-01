@@ -16,7 +16,7 @@ genes = 2				#cromosoma-->(gen x,gen y)
 dominio_funcion = 0.9999
 largo = 8				#longitud del gen (debe ser par)
 Ngen = 30				#cantidad de generaciones
-Nind = 50				#numero de individuos
+Nind = 10				#numero de individuos
 mut = 0.1				#tasa de mutacion
 cross = 0.8				#tasa de cruzamiento
 
@@ -40,13 +40,13 @@ n = ran([xmin,ymin],[xmax,ymax],Nind)
 t = np.arange(1,Ngen+1,1)
 #ciclo principal
 iter = 0
-print("Iteracion general : "+str(iter)+"/"+str(Ngen))
+#print("Iteracion general : "+str(iter)+"/"+str(Ngen))
 aux = genetico(n[:,0],n[:,1])
 while iter < Ngen:
 	#print("Iteracion general : "+str(iter+1)+"/"+str(Ngen))
 	rank = 1/(1-aux)
 	n = fentogen(n,largo,xmax,ymax,xmin,ymin)
-	n = pareja(n,rank,mut,cross)
+	n = pareja(n,rank,mut,cross,1)
 	n = gentofen(n,largo,xmax,ymax,xmin,ymin)
 	fig_01_[iter] = np.amax(rank)
 	aux = genetico(n[:,0],n[:,1])
@@ -55,6 +55,9 @@ while iter < Ngen:
 	fig_02_[iter] = ac_02/(iter+1)
 	fig_03_[iter] = ac_03/(iter+1)
 	iter = iter+1
+r1 = n[np.argmax(aux),0]
+r2 = n[np.argmax(aux),1]
+print("Mut : "+str(r1)+"    Cross : "+str(r2))
 plt.figure(3)
 plt.subplot(2,2,2)
 plt.plot(t,fig_01_,'-')

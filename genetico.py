@@ -19,8 +19,8 @@ def genetico(pMut,pCru):
 			#print("   Par de Probabilidad : "+str(a)+"/"+str(50))
 			dominio_funcion = 10
 			largo = 8				#longitud del gen (debe ser par)
-			Ngen = 30				#cantidad de generaciones
-			Nind = 50				#numero de individuos
+			Ngen = 20				#cantidad de generaciones
+			Nind = 20				#numero de individuos
 			mut = pMut[f][c]				#tasa de mutacion
 			cross = pCru[f][c]				#tasa de cruzamiento
 			Nprueba = 20
@@ -43,7 +43,7 @@ def genetico(pMut,pCru):
 				while iter < Ngen:
 					rank = 1/(1-fun(n[:,0],n[:,1]))
 					n = fentogen(n,largo,xmax,ymax,xmin,ymin)
-					n = pareja(n,rank,mut,cross)
+					n = pareja(n,rank,mut,cross,2)
 					n = gentofen(n,largo,xmax,ymax,xmin,ymin)
 					iter = iter+1
 				rank = 1/(1-fun(n[:,0],n[:,1]))

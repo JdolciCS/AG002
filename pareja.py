@@ -1,6 +1,6 @@
 import numpy as np
 
-def pareja(n,rank,mut,cross):
+def pareja(n,rank,mut,cross,AG):
 	hijo = np.zeros((rank.size))
 	hijo[0] = n[np.argmax(rank)]
 	i=1
@@ -22,10 +22,16 @@ def pareja(n,rank,mut,cross):
 		hijo[(i*2)] = n[madre]
 		#Probabilidad de cruzamiento
 		c = np.random.rand()
+		print("\n Un par de valores antes del Cruzamineto del AG : "+str(AG))
+		print(bin(int(hijo[(i*2)-1])))
+		print(bin(int(hijo[(i*2)])))
 		if c<cross:
 			cp = (2**(np.random.randint(63)))-1 #000011111
 			hijo[(i*2)-1] = (n[padre]&~cp)|(n[madre]&cp)
 			hijo[(i*2)] = (n[madre]&~cp)|(n[padre]&cp)
+			print("\n Un par de valores despues del Cruzamineto del AG : "+str(AG))
+			print(bin(int(hijo[(i*2)-1])))
+			print(bin(int(hijo[(i*2)])))
 		#Probabilidad de mutamiento
 		m = np.random.rand()
 		if m<mut:
@@ -34,5 +40,8 @@ def pareja(n,rank,mut,cross):
 				hijo[(i*2)-1] = int(hijo[i*2]-1)^mp
 			else:
 				hijo[(i*2)] = int(hijo[(i*2)])^mp
+			print("\n Un par de valores despues de la mutacion del AG : "+str(AG))
+			print(bin(int(hijo[(i*2)-1])))
+			print(bin(int(hijo[(i*2)])))
 		i = i+1
 	return hijo

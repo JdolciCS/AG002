@@ -1,3 +1,7 @@
+'''
+  *Esta funcion genera "n" pares de genes. 
+  *Cada gen esta entre "n" y "m".
+'''
 import numpy as np
 
 def ran(m,M,n):
